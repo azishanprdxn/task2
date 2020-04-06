@@ -9,7 +9,65 @@
 </head>
 
 <body>
-
+  <div>
+    <form id="detailsForm" method="post">
+      <fieldset>
+        <div class="flex-container">
+          <label for="first-name">First Name: </label>
+          <input type="text" id="first-name" required>
+          <span class="helper">
+            Should not be left blank
+          </span>
+        </div>
+        <div class="flex-container">
+          <label for="last-name">Last Name: </label>
+          <input type="text" id="last-name" required>
+          <span class="helper">
+            Should not be left blank
+          </span>
+        </div>
+        <div class="flex-container">
+          <label for="gender">Gender: </label>
+          <input type="radio" id="male" name="gender" value="Male" required>Male
+          <input type="radio" id="female" name="gender" value="Female" required>Female
+          <span class="helper">
+            Choose your gender
+          </span>
+        </div>
+        <div class="flex-container">
+          <label for="address">Address: </label>
+          <textarea rows="5" id="address" required></textarea>
+          <span class="helper">
+            Should not be left blank
+          </span>
+        </div>
+        <div>
+          <input type="checkbox" name="terms" id="terms" required>
+          <label for="terms">Terms and conditions</label>
+          <span class="helper">
+            Accept our Terms and Conditions
+          </span>
+        </div>
+        <div class="click-buttons">
+          <button type="button" value="Submit" onclick="onSubmit()">Submit</button>
+          <button type="button" value="Cancel" onclick="detailsForm.reset()">Cancel</button>
+        </div>
+        </label>
+        <div>
+          <table id="data">
+            <tr>
+              <th>Name</th>
+              <th>Last Name</th>
+              <th>Gender</th>
+              <th>Address</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </table>
+        </div>
+      </fieldset>
+    </form>
+  </div>
   <script src="./assets/js/script.js"></script>
 </body>
 
