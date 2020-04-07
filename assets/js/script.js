@@ -105,4 +105,5 @@ function onDelete() {
       tableBody.removeChild(this);
     }
   }
+  alert("This data has been deleted!")
 } 
