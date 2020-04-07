@@ -32,14 +32,14 @@ div {
   margin-left: 10px;
   color: #f00;
   font-size: 12px;
-  opacity: 0;
+  display: none;
 }
 
 textarea {
   resize: none;
 }
 
-.click-buttons {
+.form-control {
   text-align: center;
 }
 

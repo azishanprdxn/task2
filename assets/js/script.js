@@ -11,9 +11,6 @@ function onSubmit() {
   var address = document.getElementById('address').value;
   var terms = document.getElementById('terms');
 
-  // Consoling input given by the user
-  console.log(firstName, lastName, gender, address, terms.value);
-
   // Getting Helper Text for Errors
   var fNameHelper = document.getElementsByClassName('helper')[0];
   var lNameHelper = document.getElementsByClassName('helper')[1];
@@ -23,47 +20,37 @@ function onSubmit() {
 
   // For Firstname
   if (!firstName) {
-    fNameHelper.style.opacity = "1";
-    fNameHelper.style.transition = ".2s";
+    fNameHelper.style.display = "inline";
   } else {
-    fNameHelper.style.opacity = "0";
-    fNameHelper.style.transition = ".2s";
+    fNameHelper.style.display = "none";
   }
 
   // For Lastname
   if (!lastName) {
-    lNameHelper.style.opacity = "1";
-    fNameHelper.style.transition = ".2s";
+    lNameHelper.style.display = "inline";
   } else {
-    lNameHelper.style.opacity = "0";
-    fNameHelper.style.transition = ".2s";
+    lNameHelper.style.display = "none";
   }
 
   // For Gender
   if (gender == undefined) {
-    genderHelper.style.opacity = "1";
-    fNameHelper.style.transition = ".2s";
+    genderHelper.style.display = "inline";
   } else {
-    genderHelper.style.opacity = "0";
-    fNameHelper.style.transition = ".2s";
+    genderHelper.style.display = "none";
   }
 
   // For Address
   if (!address) {
-    addressHelper.style.opacity = "1";
-    fNameHelper.style.transition = ".2s";
+    addressHelper.style.display = "inline";
   } else {
-    addressHelper.style.opacity = "0";
-    fNameHelper.style.transition = ".2s";
+    addressHelper.style.display = "none";
   }
 
   // For Terms
   if (terms.checked == false) {
-    termsHelper.style.opacity = "1";
-    fNameHelper.style.transition = ".2s";
+    termsHelper.style.display = "inline";
   } else {
-    termsHelper.style.opacity = "0";
-    fNameHelper.style.transition = ".2s";
+    termsHelper.style.display = "none";
   }
 
   // Validate if all the data is filled
@@ -78,16 +65,44 @@ function onSubmit() {
       "<td>" + lastName + "</td>" +
       "<td>" + gender + "</td>" +
       "<td>" + address + "</td>" +
-      "<td>" + "<button type='button' id='editData' value='Edit'>Edit</button>" + "</td>" +
-      "<td>" + "<button type='button' id='deleteData' value='Delete'>Delete</button>" + "</td>" +
+      "<td>" + "<button type='button' id='editData' value='Edit' onclick='onEdit(this)'>Edit</button>" + "</td>" +
+      "<td>" + "<button type='button' id='deleteData' value='Delete' onclick='onDelete()'>Delete</button>" + "</td>" +
       "</tr>";
 
-      // Reset the current form data
-      document.getElementById('first-name').value = "";
-      document.getElementById('last-name').value = "";
-      document.getElementById('male').checked = false;
-      document.getElementById('female').checked = false;
-      document.getElementById('address').value = "";
-      document.getElementById('terms').checked = false;
+    // Reset the current form data
+    document.querySelector('form').reset();
   }
 }
+
+function onEdit(tableData) {
+  // Get data into input boxes
+  var selectedRow = tableData.parentElement.parentElement;
+  document.getElementById("first-name").value = selectedRow.cells[0].innerHTML;
+  document.getElementById("last-name").value = selectedRow.cells[1].innerHTML;
+  if (selectedRow.cells[2].innerHTML == "Male") {
+    document.getElementById("male").checked = true;
+  } else {
+    document.getElementById("female").checked = true;
+  }
+  document.getElementById("address").value = selectedRow.cells[3].innerHTML;
+  document.getElementById("terms").checked = true;
+
+  // Remove that particular row
+  var tableBody = document.querySelector('tbody');
+  var tableRow = document.querySelectorAll("tbody tr");
+  for (var i = 0; i < tableRow.length; i++) {
+    tableRow[i].onclick = function () {
+      tableBody.removeChild(this);
+    }
+  }
+}
+
+function onDelete() {
+  var tableBody = document.querySelector('tbody');
+  var tableRow = document.querySelectorAll("tbody tr");
+  for (var i = 0; i < tableRow.length; i++) {
+    tableRow[i].onclick = function () {
+      tableBody.removeChild(this);
+    }
+  }
+} 
