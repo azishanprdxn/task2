@@ -1,3 +1,4 @@
+// On Submit Function
 function onSubmit() {
   // Store value from the input given by the user
   var firstName = document.getElementById('first-name').value;
@@ -74,6 +75,7 @@ function onSubmit() {
   }
 }
 
+// On Edit Function
 function onEdit(tableData) {
   // Get data into input boxes
   var selectedRow = tableData.parentElement.parentElement;
@@ -97,6 +99,7 @@ function onEdit(tableData) {
   }
 }
 
+// On Delete Function
 function onDelete() {
   var tableBody = document.querySelector('tbody');
   var tableRow = document.querySelectorAll("tbody tr");
